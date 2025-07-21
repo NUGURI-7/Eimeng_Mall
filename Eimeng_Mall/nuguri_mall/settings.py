@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cart',
     'comment',
-    'goods',
+    'apps.goods',
     'order',
     'user',
     'menu',
@@ -149,3 +149,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#静态文件服务器配置
+IMAGE_URL = "http://localhost:8000/static/products_images/"
