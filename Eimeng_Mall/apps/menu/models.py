@@ -21,6 +21,7 @@ class MainMenu(models.Model):
     class Meta:
         managed = False
         db_table = 'main_menu'
+        app_label = 'menu'
 
 
 class SubMenu(models.Model):
@@ -41,3 +42,4 @@ class SubMenu(models.Model):
     class Meta:
         managed = False
         db_table = 'sub_menu'
+        app_label = 'menu'

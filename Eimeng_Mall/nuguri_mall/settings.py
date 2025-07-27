@@ -15,9 +15,10 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+APPS_DIR = os.path.join(BASE_DIR,'Eimeng_Mall','apps')
 #把apps目录加入到sys.path中，这样就可以在settings.py中引用apps目录下的文件了
-sys.path.insert(0, BASE_DIR)
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, str(BASE_DIR))
+sys.path.insert(0, APPS_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -40,12 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cart',
-    'comment',
+    'apps.cart',
+    'apps.comment',
     'apps.goods',
-    'order',
-    'user',
-    'menu',
+    'apps.order',
+    'apps.user',
+    'apps.menu',
     'rest_framework',
     'corsheaders',
 ]
