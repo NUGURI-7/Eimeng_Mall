@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.views import Request
 
+from utils import ResponseMessage
 from .models import Cart
 from .serializers import CartSerializer
 
@@ -24,7 +25,6 @@ class CartView(APIView):
         if is_exist.exists():
             existed_data = is_exist.get(
                 email=email,
-                is_delete=0,
                 sku_id=sku_id
             )
             if is_delete == 0:
@@ -40,18 +40,22 @@ class CartView(APIView):
             Cart.objects.filter(email=email,
                 is_delete=0,
                 sku_id=sku_id).update(**cart_result.data)
-            return HttpResponse('更新成功！')
+            if is_delete == 0:
+                return ResponseMessage.CartResponse.success('更新成功！')
+            elif is_delete == 1:
+                return ResponseMessage.CartResponse.success('删除成功')
         else:
+            if is_delete == 1:
+                return ResponseMessage.CartResponse.success('无法删除不存在的记录')
             # 库中没有对应的已经存在的数据时插入新数据
-
             cart_add = CartSerializer(data=request_data)
             cart_add.is_valid(raise_exception=True)
             Cart.objects.create(**cart_add.data)
-            return HttpResponse('数据不存在')
+
+            return ResponseMessage.CartResponse.success('插入成功')
 
     def get(self, request: Request):
-        request.data = request_data
-        eamil = request_data.get('email')
-        result = Cart.objects.filter(email=eamil).all()
+        email = request.query_params.get('email')
+        result = Cart.objects.filter(email=email, is_delete=0).all()
 
-        return ResponseMessage.
+        return ResponseMessage.CartResponse.success(CartSerializer(instance=result, many=True).data)
