@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.views import View
 
 from .models import MainMenu, SubMenu
-from Eimeng_Mall.utils import ResponseMessage
+from utils import ResponseMessage
 
 
 # Create your views here.

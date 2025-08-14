@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 
 from .models import Goods
-from Eimeng_Mall.utils import ResponseMessage
+from utils import ResponseMessage
 from .serializers import GoodsSerializer
 
 

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from .models import Goods
-from Eimeng_Mall.nuguri_mall.settings import IMAGE_URL
+from nuguri_mall.settings import IMAGE_URL
 
 
 class GoodsSerializer(serializers.ModelSerializer):

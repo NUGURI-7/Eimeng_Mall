@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.order',
     'apps.user',
     'apps.menu',
+    'apps.address',
     'rest_framework',
     'corsheaders',
 ]

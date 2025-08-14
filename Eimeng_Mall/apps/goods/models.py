@@ -10,7 +10,7 @@ import json
 
 from django.db import models
 
-from Eimeng_Mall.nuguri_mall.settings import IMAGE_URL
+from nuguri_mall.settings import IMAGE_URL
 
 
 class Goods(models.Model):
