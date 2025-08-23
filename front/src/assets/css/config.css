@@ -1,0 +1,8 @@
+@import './base.css';
+/*定义全局变量*/
+:root {
+    --font-red: #f10215;
+    --font-gray: #999;
+    --content-width:1200px;
+	--el-color-danger:#e2231a !important;
+}

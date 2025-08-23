@@ -1,0 +1,160 @@
+@charset "utf-8";
+@import "./base.css";
+/* CSS Document */
+/*全局样式*/
+body {
+    font-family: "微软雅黑", Arial, Verdana, Helvetica, sans-serif, "宋体";
+    font-size: 12px !important;
+    color: #333;
+    background: #fff;
+}
+
+body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+th,
+img,
+div,
+tr,
+p,
+select,
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: 0 none;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none !important;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+}
+
+a:focus {
+    outline: none;
+}
+
+.clearfix::after{
+ 	visibility: hidden;
+ 	clear:both;
+ 	display: block;
+ 	content: "";
+ 	height: 0;
+ }	
+
+input {
+    vertical-align: middle;
+    border: none;
+    background: none;
+}
+
+select {
+    vertical-align: middle;
+    border: none;
+    background: none;
+}
+
+button {
+    text-align: center;
+    border: 0;
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+textarea,
+input {
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 0px;
+    background: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+input[type=button]::-moz-focus-inner,
+input[type=submit]::-moz-focus-inner {
+    border: none;
+}
+
+input[type=button],
+input[type=submit] {
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
+/* 左浮动*/
+.fl {
+    float: left;
+}
+/* 右浮动*/
+.fr {
+    float: right;
+}
+/* 鼠标变小手*/
+.cs {
+    cursor: pointer;
+}
+/* 超过一行内容多的变成... */
+.dian1 {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+/* 超过两行行内容多的变成... */
+.dian2 {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+/* 超过三行内容多的变成... */
+.dian3 {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
