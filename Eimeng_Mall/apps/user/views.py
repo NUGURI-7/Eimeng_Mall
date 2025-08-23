@@ -1,10 +1,11 @@
-
+from rest_framework.generics import GenericAPIView
 from rest_framework.request import Request
 from rest_framework.views import APIView
 
 from apps.user.models import User
 from apps.user.serializers import UserSerializer
 from utils import ResponseMessage
+from utils.jwt_auth import create_token
 from utils.password_encode import get_md5
 
 
@@ -34,3 +35,30 @@ class UserApiView(APIView):
         except Exception as e :
             print(e)
             return ResponseMessage.UserResponse.failed('用户信息获取失败')
+
+class LoginView(GenericAPIView):
+
+    def post(self, request: Request):
+        user_profile = {}
+        request_data = request.data
+        email = request_data.get('username')
+        user_detail = User.objects.filter(email=email).first()
+        if user_detail is None:
+            return ResponseMessage.UserResponse.other("用户名或密码错误")
+        else:
+            user_ser = UserSerializer(instance=user_detail, many=False)
+            # 用户输入的密码
+            input_password = request_data.get("password")
+            password = get_md5(input_password)
+            # 数据库密码
+            db_password = user_ser.data.get("password")
+            if password != db_password:
+                return ResponseMessage.UserResponse.other("用户名或密码错误")
+            else:
+                token_info = {
+                    'username': email
+                }
+                token_data = create_token(token_info)
+                user_profile["token"] = token_data
+                user_profile["username"] = user_ser.data.get("name")
+                return ResponseMessage.UserResponse.success(user_profile)

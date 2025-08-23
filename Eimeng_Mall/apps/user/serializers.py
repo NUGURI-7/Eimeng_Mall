@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
         required=True, allow_blank= False,
         validators=[UniqueValidator(User.objects.all(), message="用户已存在")]
         )
-    password = serializers.CharField(write_only=True)
+    password = serializers.CharField()
     birthday = serializers.DateTimeField("%Y-%m-%d %H:%M:%S")
     create_time = serializers.DateTimeField("%Y-%m-%d %H:%M:%S",required=False)
 
