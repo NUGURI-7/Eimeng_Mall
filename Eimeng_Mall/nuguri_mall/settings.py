@@ -57,7 +57,18 @@ CORS_ORIGIN_ALLOW_ALL = True
 # 允许携带cookie
 CORS_ALLOW_CREDENTIALS=True
 
-
+# settings.py
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",  # 添加这一行
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

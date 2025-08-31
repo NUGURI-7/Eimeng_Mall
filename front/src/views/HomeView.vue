@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        我是主页
+    </div>
+    <div>
+        {{ mainList }}
+    </div>
+
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+<script setup>
+import { getMainMenu } from '@/network/home';
+import  {ref } from 'vue'
+const mainMenu = ref()
+
+const mainList = getMainMenu().then(res => {
+    console.log(res);
+    return res
+})
+
+
 </script>
